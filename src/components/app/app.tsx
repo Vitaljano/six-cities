@@ -1,17 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AppRoute } from '../../const';
 import Login from '../login/login';
 import Favorites from '../favorites/favorites';
 import Main from '../main/main';
 import Room from '../room/room';
 import NotFound from '../not-found/not-found';
 
-enum AppRoute {
-  notFound = '*',
-  home = '/',
-  login = '/login',
-  favorites = '/favorites',
-  offer = '/offer/:id',
-}
 type ItemsSuggestCount = {
   itemsCount: number;
 };
