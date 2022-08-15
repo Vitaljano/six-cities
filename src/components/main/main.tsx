@@ -1,11 +1,12 @@
 import React from 'react';
-import Card from '../card/card';
+import { Offer } from '../../types/offer';
+import { PlaceList } from '../place-list/place-list';
 
-type ItemsSuggestCount = {
-  itemsCount: number;
+type Props = {
+  offers: Array<Offer>;
 };
 
-export default function main({ itemsCount }: ItemsSuggestCount): JSX.Element {
+export default function main({ offers }: Props): JSX.Element {
   return (
     <React.Fragment>
       <div style={{ display: 'none' }}>
@@ -138,9 +139,7 @@ export default function main({ itemsCount }: ItemsSuggestCount): JSX.Element {
                     </li>
                   </ul>
                 </form>
-                <div className="cities__places-list places__list tabs__content">
-                  <Card />
-                </div>
+                <PlaceList offers={offers} />
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map"></section>

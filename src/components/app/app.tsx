@@ -5,16 +5,17 @@ import Favorites from '../favorites/favorites';
 import Main from '../main/main';
 import Room from '../room/room';
 import NotFound from '../not-found/not-found';
+import { Offer } from '../../types/offer';
 
-type ItemsSuggestCount = {
-  itemsCount: number;
+type Props = {
+  offers: Array<Offer>;
 };
 
-function App({ itemsCount }: ItemsSuggestCount): JSX.Element {
+function App({ offers }: Props): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.home} element={<Main itemsCount={7} />} />
+        <Route path={AppRoute.home} element={<Main offers={offers} />} />
         <Route path={AppRoute.login} element={<Login />} />
         <Route path={AppRoute.favorites} element={<Favorites />} />
         <Route path={AppRoute.offer} element={<Room />} />
