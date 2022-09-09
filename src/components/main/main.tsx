@@ -1,6 +1,7 @@
 import React from 'react';
 import { Offer } from '../../types/offer';
 import { PlaceList } from '../place-list/place-list';
+import OfferMap from '../map/map';
 
 type Props = {
   offers: Array<Offer>;
@@ -142,7 +143,9 @@ export default function main({ offers }: Props): JSX.Element {
                 <PlaceList offers={offers} />
               </section>
               <div className="cities__right-section">
-                <section className="cities__map map"></section>
+                <section className=" map">
+                  <OfferMap></OfferMap>
+                </section>
               </div>
             </div>
           </div>

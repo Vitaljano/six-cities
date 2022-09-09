@@ -1,7 +1,16 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
+import { Offer } from '../../types/offer';
 import ReviewFrom from '../review-form/review-form';
 
-function room() {
+type Props = {
+  offers: Array<Offer>;
+};
+
+export default function Room(offers: Props) {
+  const { offerId } = useParams();
+  const [currentOffer] = offers.offers.filter((item) => item.id === offerId);
+
   return (
     <React.Fragment>
       <div style={{ display: 'none' }}>
@@ -119,9 +128,7 @@ function room() {
                   <span>Premium</span>
                 </div>
                 <div className="property__name-wrapper">
-                  <h1 className="property__name">
-                    Beautiful &amp; luxurious studio at great location
-                  </h1>
+                  <h1 className="property__name">{currentOffer.title}</h1>
                   <button
                     className="property__bookmark-button button"
                     type="button"
@@ -400,4 +407,3 @@ function room() {
     </React.Fragment>
   );
 }
-export default room;

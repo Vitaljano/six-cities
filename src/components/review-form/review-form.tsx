@@ -1,13 +1,24 @@
 import { useState } from 'react';
 
 function ReviewFrom() {
-  const [review, setReview] = useState('');
-  const [reviewStar, setReviewStar] = useState(0);
+  const [, setReview] = useState('');
+  const [, setReviewStar] = useState(0);
+  const [submitIsActive, setSubmitActive] = useState(true);
 
   function formReviewHandler({ target }: { target: EventTarget | null }) {
     const textInput = target as HTMLTextAreaElement;
     if (textInput) {
       setReview(textInput.value);
+    }
+    if (textInput.value.length > 50) {
+      setSubmitActive(false);
+    }
+  }
+
+  function startSelectHandler({ target }: { target: EventTarget | null }) {
+    const input = target as HTMLInputElement;
+    if (input) {
+      setReviewStar(parseInt(input.value, 10));
     }
   }
 
@@ -16,7 +27,10 @@ function ReviewFrom() {
       <label className="reviews__label form__label" htmlFor="review">
         Your review
       </label>
-      <div className="reviews__rating-form form__rating">
+      <div
+        className="reviews__rating-form form__rating"
+        onClick={startSelectHandler}
+      >
         <input
           className="form__rating-input visually-hidden"
           name="rating"
@@ -118,7 +132,7 @@ function ReviewFrom() {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled
+          disabled={submitIsActive}
         >
           Submit
         </button>

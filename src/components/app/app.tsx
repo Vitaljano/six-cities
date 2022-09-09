@@ -18,7 +18,7 @@ function App({ offers }: Props): JSX.Element {
         <Route path={AppRoute.home} element={<Main offers={offers} />} />
         <Route path={AppRoute.login} element={<Login />} />
         <Route path={AppRoute.favorites} element={<Favorites />} />
-        <Route path={AppRoute.offer} element={<Room />} />
+        <Route path={AppRoute.offer} element={<Room offers={offers} />} />
         <Route path={AppRoute.notFound} element={<NotFound />} />
       </Routes>
     </BrowserRouter>
