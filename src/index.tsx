@@ -1,15 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { render } from 'react-dom';
 import App from './components/app/app';
 
 import { offers } from './mocks/offers';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = document.getElementById('root') as HTMLElement;
 
-root.render(
+render(
   <React.StrictMode>
     <App offers={offers} />
-  </React.StrictMode>
+  </React.StrictMode>,
+  root
 );
