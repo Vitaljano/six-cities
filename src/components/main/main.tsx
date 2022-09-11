@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Offer } from '../../types/offer';
 import { PlaceList } from '../place-list/place-list';
-import OfferMap from '../map/map';
+import Map from '../map/map';
+import { Point } from '../../types/types';
+import { POINTS } from '../../mocks/pointsMock';
+import { CITY } from '../../mocks/cityMock';
 
 type Props = {
   offers: Array<Offer>;
 };
 
-export default function main({ offers }: Props): JSX.Element {
+export default function Main({ offers }: Props): JSX.Element {
+  const [selectedPoint, setSelectedPoint] = useState<Point | undefined>(
+    undefined
+  );
+
+  const onListItemHover = (listItemName: string) => {
+    const currentPoint = POINTS.find((point) => point.title === listItemName);
+
+    setSelectedPoint(currentPoint);
+  };
   return (
     <React.Fragment>
       <div style={{ display: 'none' }}>
@@ -143,8 +155,13 @@ export default function main({ offers }: Props): JSX.Element {
                 <PlaceList offers={offers} />
               </section>
               <div className="cities__right-section">
-                <section className=" map">
-                  <OfferMap></OfferMap>
+                <section className="cities__map map">
+                  {/* <List points={POINTS} onListItemHover={onListItemHover} /> */}
+                  <Map
+                    city={CITY}
+                    points={POINTS}
+                    selectedPoint={selectedPoint}
+                  />
                 </section>
               </div>
             </div>
